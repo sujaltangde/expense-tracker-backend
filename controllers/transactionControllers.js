@@ -8,7 +8,7 @@ exports.makeTransaction = async (req, res) => {
 
         const user = await User.findById(req.user._id)
 
-        const {description,amount,category} = req.body ;
+        const {description,amount,category,createdAt} = req.body ;
 
 
         if(user.balance === 0 && category === "expense"){
@@ -45,6 +45,7 @@ exports.makeTransaction = async (req, res) => {
             description,
             amount,
             category,
+            createdAt,
             user:req.user._id
         })
 
